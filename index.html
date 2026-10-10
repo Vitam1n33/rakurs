@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ракурс — онлайн-школа фотографии</title>
+<meta name="description" content="Онлайн-школа фотографии для взрослых новичков. Учим снимать на телефон и камеру — сразу на практике.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Тема, выбранная вручную, ставится до отрисовки, чтобы страница не мигала светлой
+  try { var t = localStorage.getItem('rakurs-theme'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span>Ракурс</a>
+    <nav class="nav">
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="#courses">Курсы и цены</a>
+      <a href="#gallery">Примеры фото</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button type="button" class="theme-toggle"></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Онлайн-школа фотографии</span>
+        <h1>Снимаешь на телефон? Отлично, начнём с него.</h1>
+        <p>Учим взрослых новичков снимать на то, что уже есть под рукой. Без формул и трёх лет теории: сразу практика и разбор твоих же кадров.</p>
+        <a class="btn" href="#courses">Выбрать курс</a>
+        <div class="hero-note">Старт потоков 1-го числа каждого месяца</div>
+      </div>
+      <div class="viewfinder">
+        <div class="frame" aria-hidden="true">
+          <div class="frame-scene">
+            <img src="фото/photo-1790165726293-2e98f1ac538f.jpg" alt="" data-focus="62" class="is-current">
+            <img src="фото/756038770746465.jpg" alt="" data-focus="38">
+            <img src="фото/photo-1790066314541-d0823f0c7109.jpg" alt="" data-focus="74" style="object-position: center 30%">
+            <img src="фото/photo-1789020556572-73ad4226947d.jpg" alt="" data-focus="28">
+            <img src="фото/photo-1789540515476-95d2a4ae73ad.jpg" alt="" data-focus="55">
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="focus-point"></span>
+          <span class="rec">REC</span>
+          <div class="frame-meta"><span class="vf-shutter">1/250</span><span>f/2.8</span><span>ISO 100</span></div>
+        </div>
+        <div class="vf-controls">
+          <label class="vf-control">
+            <span>Свет</span>
+            <input type="range" class="vf-light" min="-2" max="2" step="1" value="0" aria-label="Свет">
+            <output class="vf-light-out">0</output>
+            <span class="vf-spacer" aria-hidden="true"></span>
+          </label>
+          <div class="vf-control">
+            <span>Фокус</span>
+            <input type="range" class="vf-focus" min="0" max="100" step="1" value="10" aria-label="Фокус">
+            <output class="vf-focus-out"></output>
+            <button type="button" class="vf-af" data-vf="af" aria-label="Автофокус" title="Автофокус">AF</button>
+          </div>
+          <div class="vf-bottom">
+            <p class="vf-hint" aria-live="polite"></p>
+            <button type="button" class="vf-next" data-vf="next">Сменить кадр</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Курсы и цены</h2>
+        <p>Уроки по 8–15 минут и задание после каждого блока. Тарифы различаются только объёмом обратной связи. Цена указана за весь курс, платишь один раз, доступ к урокам остаётся навсегда.</p>
+      </div>
+
+      <div class="course-filter" role="group" aria-label="Какие курсы показать">
+        <button type="button" data-filter="all" aria-pressed="true">Все курсы</button>
+        <button type="button" data-filter="fav" aria-pressed="false">Избранное (<span class="fav-count">0</span>)</button>
+      </div>
+      <p class="fav-tip">Нажми на цену, и курс попадёт в избранное в этом формате. Сердечко добавляет курс с тарифом «С разбором».</p>
+      <p class="fav-empty" hidden>Тут пока пусто. Нажми на цену или на сердечко у курса, и он сохранится здесь.</p>
+      <p class="fav-summary" hidden></p>
+
+      <div class="course-grid">
+        <article class="course" data-id="phone">
+          <div class="tags"><span class="tag">4 недели</span><span class="tag">с нуля</span></div>
+          <h3>Телефон как камера</h3>
+          <p>Свет, композиция, ракурс и обработка прямо в телефоне.</p>
+          <div class="prices">
+            <button type="button" class="price-row" data-tariff="self" data-price="4900"><span>Сам</span><strong>4 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="review" data-price="7900"><span>С разбором</span><strong>7 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="personal" data-price="14900"><span>Личный</span><strong>14 900 ₽</strong></button>
+          </div>
+        </article>
+
+        <article class="course" data-id="camera">
+          <div class="tags"><span class="tag">6 недель</span><span class="tag">базовый</span></div>
+          <h3>Первая камера</h3>
+          <p>Выдержка, диафрагма, ISO. Как перестать снимать в авто-режиме.</p>
+          <div class="prices">
+            <button type="button" class="price-row" data-tariff="self" data-price="6900"><span>Сам</span><strong>6 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="review" data-price="10900"><span>С разбором</span><strong>10 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="personal" data-price="19900"><span>Личный</span><strong>19 900 ₽</strong></button>
+          </div>
+        </article>
+
+        <article class="course" data-id="editing">
+          <div class="tags"><span class="tag">3 недели</span><span class="tag">любой уровень</span></div>
+          <h3>Обработка без перегруза</h3>
+          <p>Лёгкая обработка в Lightroom Mobile и на компьютере.</p>
+          <div class="prices">
+            <button type="button" class="price-row" data-tariff="self" data-price="3900"><span>Сам</span><strong>3 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="review" data-price="6400"><span>С разбором</span><strong>6 400 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="personal" data-price="11900"><span>Личный</span><strong>11 900 ₽</strong></button>
+          </div>
+        </article>
+
+        <article class="course" data-id="social">
+          <div class="tags"><span class="tag">4 недели</span><span class="tag">базовый</span></div>
+          <h3>Контент для соцсетей</h3>
+          <p>Съёмка и тексты для Telegram и VK: посты, истории, рубрики.</p>
+          <div class="prices">
+            <button type="button" class="price-row" data-tariff="self" data-price="5900"><span>Сам</span><strong>5 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="review" data-price="8900"><span>С разбором</span><strong>8 900 ₽</strong></button>
+            <button type="button" class="price-row" data-tariff="personal" data-price="16900"><span>Личный</span><strong>16 900 ₽</strong></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tariffs">
+        <div class="tariff">
+          <h3>Сам</h3>
+          <p>Все уроки и задания, доступ к чату потока. Домашние задания преподаватель не проверяет.</p>
+        </div>
+        <div class="tariff">
+          <h3>С разбором</h3>
+          <p>Всё из «Сам», плюс проверка домашних заданий и письменная обратная связь по твоим кадрам. Сертификат по итогам.</p>
+        </div>
+        <div class="tariff">
+          <h3>Личный</h3>
+          <p>Всё из «С разбором», плюс три индивидуальные видео-консультации с преподавателем. Сертификат по итогам.</p>
+        </div>
+      </div>
+
+      <ul class="terms">
+        <li><b>Старт 1-го числа</b>Место можно занять заранее, доступ откроется в день старта.</li>
+        <li><b>Рассрочка на 3 месяца</b>Без процентов, через сервис банка-партнёра.</li>
+        <li><b>Возврат за 7 дней</b>Если после старта пройдено не больше двух уроков.</li>
+        <li><b>Любое устройство</b>Телефон, планшет или компьютер. Хватит 2–3 часов в неделю.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Примеры фото</h2>
+        <p>В каждом снимке видно то, что мы разбираем на курсах: свет, композицию и ракурс. Нажми на фото, и оно откроется в видоискателе. Там можно покрутить свет и фокус и нажать на спуск.</p>
+      </div>
+      <ul class="gallery">
+        <li class="shot wide" data-focus="28">
+          <figure>
+            <button type="button" class="shot-open"><span class="rec" aria-hidden="true">REC</span><img src="фото/photo-1789020556572-73ad4226947d.jpg" alt="Рука касается белого георгина в саду"></button>
+            <figcaption><b>Жест вместо лица</b><span>В кадре только рука и цветок, а историю всё равно понятно. Остальной сад уходит в мягкий фон.</span></figcaption>
+          </figure>
+        </li>
+        <li class="shot tall" data-focus="62">
+          <figure>
+            <button type="button" class="shot-open"><span class="rec" aria-hidden="true">REC</span><img src="фото/photo-1790165726293-2e98f1ac538f.jpg" alt="Белая ступа на вершине горы, к ней ведёт длинная лестница"></button>
+            <figcaption><b>Ведущие линии</b><span>Лестница ведёт взгляд снизу вверх, прямо к храму. Тёплый вечерний свет добавляет объёма.</span></figcaption>
+          </figure>
+        </li>
+        <li class="shot" data-focus="38">
+          <figure>
+            <button type="button" class="shot-open"><span class="rec" aria-hidden="true">REC</span><img src="фото/756038770746465.jpg" alt="Жук-усач сидит на стебле, фон мягко размыт"></button>
+            <figcaption><b>Размытый фон</b><span>Жук резкий, а всё вокруг размыто. Глаз сразу находит героя.</span></figcaption>
+          </figure>
+        </li>
+        <li class="shot" data-focus="74">
+          <figure>
+            <button type="button" class="shot-open"><span class="rec" aria-hidden="true">REC</span><img src="фото/photo-1790066314541-d0823f0c7109.jpg" alt="Чёрно-белый портрет девочки с косичками, она смотрит в камеру" style="object-position: center 30%"></button>
+            <figcaption><b>Чёрно-белый портрет</b><span>Без цвета ничего не отвлекает. Остаются взгляд и свет на коже.</span></figcaption>
+          </figure>
+        </li>
+        <li class="shot" data-focus="55">
+          <figure>
+            <button type="button" class="shot-open"><span class="rec" aria-hidden="true">REC</span><img src="фото/photo-1789540515476-95d2a4ae73ad.jpg" alt="Мужчина в панаме отдыхает на ярких коврах в тени деревьев"></button>
+            <figcaption><b>Живой момент</b><span>Человек просто отдыхает, а яркие ковры задают цвет. Кадр выглядит живым, а не постановочным.</span></figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contacts" id="contacts">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Контакты</h2>
+        <p>Есть вопросы? Напиши нам. А в канале и сообществе выкладываем советы и разборы кадров.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact" href="https://t.me/rakurs_school" target="_blank" rel="noopener">
+          <small>Telegram-канал</small>
+          <strong>@rakurs_school</strong>
+          <p>Анонсы, советы, разборы</p>
+        </a>
+        <a class="contact" href="https://vk.com/rakurs_school" target="_blank" rel="noopener">
+          <small>Сообщество ВКонтакте</small>
+          <strong>vk.com/rakurs_school</strong>
+          <p>Новости школы и работы учеников</p>
+        </a>
+        <a class="contact" href="mailto:hello@rakurs.example">
+          <small>Почта для вопросов</small>
+          <strong>hello@rakurs.example</strong>
+          <p>Ответим и поможем выбрать курс</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">© Ракурс, онлайн-школа фотографии</div>
+</footer>
+
+<dialog class="lightbox" aria-label="Видоискатель">
+  <button type="button" class="lb-btn lb-close" aria-label="Закрыть">✕</button>
+  <div class="lb-body">
+    <div class="frame lb-frame" aria-hidden="true">
+      <div class="frame-scene"></div>
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <span class="focus-point"></span>
+      <span class="rec">REC</span>
+      <span class="vf-flash"></span>
+      <div class="frame-meta"><span class="vf-shutter">1/250</span><span>f/2.8</span><span>ISO 100</span></div>
+    </div>
+    <div class="lightbox-caption"><b></b><span></span></div>
+    <div class="vf-controls">
+      <div class="vf-sliders">
+        <label class="vf-control">
+          <span>Свет</span>
+          <input type="range" class="vf-light" min="-2" max="2" step="1" value="0" aria-label="Свет">
+          <output class="vf-light-out">0</output>
+          <span class="vf-spacer" aria-hidden="true"></span>
+        </label>
+        <div class="vf-control">
+          <span>Фокус</span>
+          <input type="range" class="vf-focus" min="0" max="100" step="1" value="50" aria-label="Фокус">
+          <output class="vf-focus-out"></output>
+          <button type="button" class="vf-af" data-vf="af" aria-label="Автофокус" title="Автофокус">AF</button>
+        </div>
+      </div>
+      <div class="lb-actions">
+        <button type="button" class="lb-btn" data-vf="prev" aria-label="Предыдущее фото">←</button>
+        <button type="button" class="vf-shoot" data-vf="shoot" aria-label="Сделать снимок"></button>
+        <button type="button" class="lb-btn" data-vf="next" aria-label="Следующее фото">→</button>
+      </div>
+      <p class="vf-hint" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  // Оранжевая плашка в меню: подсвечивает раздел, который сейчас на экране
+  (function () {
+    var pill = document.querySelector('.nav-pill');
+    // Только ссылки на разделы этой страницы; «Примеры фото» ведёт на gallery.html
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+    var allLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var locked = null, unlockTimer = null;
+
+    function setActive(link) {
+      allLinks.forEach(function (a) { a.classList.toggle('active', a === link); });
+      if (link) {
+        pill.style.left = link.offsetLeft + 'px';
+        pill.style.width = link.offsetWidth + 'px';
+      }
+      pill.classList.toggle('visible', !!link);
+    }
+
+    function current() {
+      var doc = document.documentElement;
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 2) return links[links.length - 1];
+      var line = window.innerHeight * 0.4, found = null;
+      sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= line) found = links[i]; });
+      return found;
+    }
+
+    function update() {
+      setActive(locked || current());
+    }
+
+    // После клика держим плашку на выбранном пункте, пока идёт плавная прокрутка
+    function unlock() { locked = null; update(); }
+    links.forEach(function (a) {
+      a.addEventListener('click', function () {
+        locked = a;
+        setActive(a);
+        clearTimeout(unlockTimer);
+        unlockTimer = setTimeout(unlock, 1000);
+      });
+    });
+
+    // Якорные ссылки прокручиваем сами: в некоторых превью переход по #якорю заблокирован
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    window.addEventListener('scrollend', function () { if (locked) { clearTimeout(unlockTimer); unlock(); } });
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    if (document.fonts) document.fonts.ready.then(update);
+    update();
+  })();
+
+  // Переключатель темы: светлая ↔ тёмная. Пока вручную не выбрано, тема следует настройке системы
+  (function () {
+    var btn = document.querySelector('.theme-toggle');
+    var root = document.documentElement;
+    var media = window.matchMedia('(prefers-color-scheme: dark)');
+    var MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
+    var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+
+    function current() { return root.dataset.theme || (media.matches ? 'dark' : 'light'); }
+
+    function render() {
+      var dark = current() === 'dark';
+      btn.innerHTML = dark ? SUN : MOON;
+      btn.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+      btn.title = dark ? 'Светлая тема' : 'Тёмная тема';
+    }
+
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('rakurs-theme', next); } catch (e) {}
+      render();
+    });
+    if (media.addEventListener) media.addEventListener('change', render);
+    render();
+  })();
+
+  // Видоискатель: кадры, свет, фокус и (если есть кнопка) спуск затвора.
+  // Один и тот же код работает на первом экране и в полноэкранном просмотре фото.
+  // В режиме auto кадры листаются сами, а фокус подстраивается («автофокус»),
+  // пока посетитель не тронет ползунок. Потом включается ручной режим.
+  function createViewfinder(root, opts) {
+    var frame = root.querySelector('.frame');
+    var scene = root.querySelector('.frame-scene');
+    var light = root.querySelector('.vf-light');
+    var focus = root.querySelector('.vf-focus');
+    var lightOut = root.querySelector('.vf-light-out');
+    var focusOut = root.querySelector('.vf-focus-out');
+    var shutter = root.querySelector('.vf-shutter');
+    var hint = root.querySelector('.vf-hint');
+    var shootBtn = root.querySelector('[data-vf="shoot"]');
+    var focusPoint = root.querySelector('.focus-point');
+    var SHUTTERS = ['1/1000', '1/500', '1/250', '1/125', '1/60'];
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0, manual = !opts.auto, timer = null, verdict = '', afFrame = null;
+
+    function shots() { return scene.querySelectorAll('img'); }
+    function target() { return Number(shots()[current].dataset.focus); }
+    function state() {
+      var ev = Number(light.value);
+      return { ev: ev, sharp: Math.abs(Number(focus.value) - target()) <= 3 };
+    }
+
+    function render() {
+      var s = state();
+      var miss = Math.abs(Number(focus.value) - target());
+      scene.style.setProperty('--light', 1 + s.ev * 0.3);
+      scene.style.setProperty('--blur', Math.min(miss / 3, 10) + 'px');
+      frame.classList.toggle('in-focus', s.sharp);
+      lightOut.textContent = s.ev > 0 ? '+' + s.ev : s.ev;
+      focusOut.textContent = (0.5 + focus.value / 10).toFixed(1) + ' м';
+      shutter.textContent = SHUTTERS[s.ev + 2];
+
+      if (verdict) hint.textContent = verdict;
+      else if (!manual) hint.textContent = 'Автофокус. Подвинь ползунки и снимай вручную.';
+      else if (!s.sharp) hint.textContent = 'Крути фокус или жми AF, пока рамка не станет зелёной.';
+      else if (s.ev < 0) hint.textContent = 'Резко, но темновато. Добавь света.';
+      else if (s.ev > 0) hint.textContent = 'Резко, но пересвет: светлое выгорает.';
+      else hint.textContent = shootBtn ? 'Резко и по свету. Жми на спуск!' : 'Резко и по свету. Кадр готов!';
+    }
+
+    function show(i) {
+      var list = shots();
+      stopAutofocus();
+      list[current].classList.remove('is-current');
+      current = (i + list.length) % list.length;
+      list[current].classList.add('is-current');
+      focusPoint.style.left = focusPoint.style.top = '';
+      verdict = '';
+      render();
+      if (!manual) autofocus();
+      if (opts.onShow) opts.onShow(current);
+    }
+
+    // Автофокус как в камере: ползунок «проскакивает» резкость и возвращается к ней
+    function stopAutofocus() {
+      if (afFrame) clearTimeout(afFrame);
+      afFrame = null;
+      frame.classList.remove('af-busy');
+    }
+
+    function autofocus() {
+      stopAutofocus();
+      verdict = '';
+      var from = Number(focus.value), to = target();
+      if (reduced || from === to) { focus.value = to; render(); return; }
+      var over = Math.max(0, Math.min(100, to + (to > from ? 7 : -7)));
+      var ease = function (x) { return 1 - (1 - x) * (1 - x); };
+      var start = Date.now(), DURATION = 700;
+      frame.classList.add('af-busy');
+      function step() {
+        var t = Math.min((Date.now() - start) / DURATION, 1);
+        var v = t < 0.6 ? from + (over - from) * ease(t / 0.6) : over + (to - over) * ease((t - 0.6) / 0.4);
+        focus.value = Math.round(v);
+        render();
+        if (t < 1) afFrame = setTimeout(step, 16);
+        else stopAutofocus();
+      }
+      step();
+    }
+
+    function goManual() {
+      manual = true;
+      clearInterval(timer);
+    }
+
+    function shoot() {
+      var s = state();
+      frame.classList.remove('flash');
+      void frame.offsetWidth; // перезапуск анимации вспышки
+      frame.classList.add('flash');
+      if (!s.sharp) verdict = 'Снято, но смазано. Сначала поймай фокус.';
+      else if (s.ev < 0) verdict = 'Снято, но темно. Добавь света.';
+      else if (s.ev > 0) verdict = 'Снято, но пересвет. Убавь свет.';
+      else verdict = 'Снято! Резкий кадр, свет в норме.';
+      render();
+    }
+
+    [light, focus].forEach(function (input) {
+      input.addEventListener('input', function () { stopAutofocus(); goManual(); verdict = ''; render(); });
+    });
+    root.querySelectorAll('[data-vf="af"]').forEach(function (b) { b.addEventListener('click', autofocus); });
+    // Касание по кадру: рамка фокуса переезжает в это место, и включается автофокус
+    frame.addEventListener('click', function (e) {
+      var r = frame.getBoundingClientRect();
+      var x = Math.max(10, Math.min(90, (e.clientX - r.left) / r.width * 100));
+      var y = Math.max(10, Math.min(90, (e.clientY - r.top) / r.height * 100));
+      focusPoint.style.left = x + '%';
+      focusPoint.style.top = y + '%';
+      autofocus();
+    });
+    root.querySelectorAll('[data-vf="next"]').forEach(function (b) { b.addEventListener('click', function () { show(current + 1); }); });
+    root.querySelectorAll('[data-vf="prev"]').forEach(function (b) { b.addEventListener('click', function () { show(current - 1); }); });
+    if (shootBtn) shootBtn.addEventListener('click', shoot);
+
+    if (opts.auto) {
+      focus.value = target();
+      if (!reduced) {
+        timer = setInterval(function () { show(current + 1); }, 4000);
+      }
+    }
+    render();
+
+    return {
+      show: show,
+      // Открыть кадр сразу резким и со светом «по нулям»
+      reset: function (i) { light.value = 0; focus.value = Number(shots()[i].dataset.focus); show(i); }
+    };
+  }
+
+  createViewfinder(document.querySelector('.viewfinder'), { auto: true });
+
+  // Примеры фото: по клику фото открывается на весь экран в видоискателе
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+    var box = document.querySelector('.lightbox');
+    var scene = box.querySelector('.frame-scene');
+    var frame = box.querySelector('.lb-frame');
+    var title = box.querySelector('.lightbox-caption b');
+    var text = box.querySelector('.lightbox-caption span');
+
+    items.forEach(function (item, i) {
+      var src = item.querySelector('img');
+      var img = document.createElement('img');
+      img.src = src.src;
+      img.alt = '';
+      img.dataset.focus = item.dataset.focus;
+      if (i === 0) img.className = 'is-current';
+      scene.appendChild(img);
+    });
+
+    var vf = createViewfinder(box, {
+      auto: false,
+      onShow: function (i) {
+        // Рамка принимает пропорции снимка: вертикальные фото не обрезаются
+        var img = scene.querySelectorAll('img')[i];
+        var setRatio = function () { if (img.naturalWidth) frame.style.setProperty('--ar', img.naturalWidth / img.naturalHeight); };
+        if (img.complete) setRatio(); else img.addEventListener('load', setRatio, { once: true });
+        title.textContent = items[i].querySelector('figcaption b').textContent;
+        text.textContent = items[i].querySelector('figcaption span').textContent;
+      }
+    });
+
+    items.forEach(function (item, i) {
+      item.querySelector('.shot-open').addEventListener('click', function () {
+        vf.reset(i);
+        box.showModal();
+      });
+    });
+
+    box.querySelector('.lb-close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+    // Стрелки листают кадры, если фокус не на ползунке (там стрелки двигают ползунок)
+    box.addEventListener('keydown', function (e) {
+      if (e.target.type === 'range') return;
+      if (e.key === 'ArrowLeft') box.querySelector('[data-vf="prev"]').click();
+      if (e.key === 'ArrowRight') box.querySelector('[data-vf="next"]').click();
+    });
+  })();
+
+  // Избранные курсы с выбранным форматом (тарифом).
+  // Клик по цене кладёт курс в избранное именно с этим тарифом, повторный клик убирает.
+  // Сердечко добавляет курс с тарифом по умолчанию или убирает его.
+  // В localStorage хранится объект { id курса: тариф }.
+  (function () {
+    var KEY = 'rakurs-favorites';
+    var DEFAULT_TARIFF = 'review';
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.course[data-id]'));
+    var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.course-filter button'));
+    var countEl = document.querySelector('.fav-count');
+    var emptyEl = document.querySelector('.fav-empty');
+    var summaryEl = document.querySelector('.fav-summary');
+    var filter = 'all';
+    var favs = {};
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY));
+      if (Array.isArray(saved)) {
+        // Старый формат: просто список курсов без тарифа
+        saved.forEach(function (id) { favs[id] = DEFAULT_TARIFF; });
+      } else if (saved && typeof saved === 'object') {
+        favs = saved;
+      }
+    } catch (e) {}
+
+    function save() {
+      try { localStorage.setItem(KEY, JSON.stringify(favs)); } catch (e) {}
+    }
+
+    function plural(n) {
+      var m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return 'курс';
+      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'курса';
+      return 'курсов';
+    }
+
+    function render() {
+      var count = 0, total = 0;
+      cards.forEach(function (card) {
+        var tariff = favs[card.dataset.id];
+        var on = !!tariff;
+        var btn = card.querySelector('.fav-btn');
+        var title = card.querySelector('h3').textContent;
+        card.classList.toggle('is-fav', on);
+        card.hidden = filter === 'fav' && !on;
+        btn.setAttribute('aria-pressed', on);
+        btn.setAttribute('aria-label', (on ? 'Убрать из избранного: ' : 'Добавить в избранное: ') + title);
+        btn.title = on ? 'Убрать из избранного' : 'В избранное';
+        card.querySelectorAll('.price-row').forEach(function (row) {
+          var picked = row.dataset.tariff === tariff;
+          row.setAttribute('aria-pressed', picked);
+          if (picked) total += Number(row.dataset.price);
+        });
+        if (on) count++;
+      });
+      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.filter === filter); });
+      countEl.textContent = count;
+      emptyEl.hidden = !(filter === 'fav' && count === 0);
+      summaryEl.hidden = !(filter === 'fav' && count > 0);
+      summaryEl.innerHTML = 'В избранном ' + count + ' ' + plural(count) + ' на сумму <b>' + total.toLocaleString('ru-RU') + ' ₽</b>';
+    }
+
+    cards.forEach(function (card) {
+      var id = card.dataset.id;
+      var title = card.querySelector('h3').textContent;
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'fav-btn';
+      btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" stroke-linejoin="round"/></svg>';
+      btn.addEventListener('click', function () {
+        if (favs[id]) delete favs[id]; else favs[id] = DEFAULT_TARIFF;
+        save();
+        render();
+      });
+      card.appendChild(btn);
+
+      card.querySelectorAll('.price-row').forEach(function (row) {
+        var name = row.querySelector('span').textContent;
+        row.setAttribute('aria-label', title + ', тариф «' + name + '», ' + row.querySelector('strong').textContent + '. Выбрать для избранного');
+        row.addEventListener('click', function () {
+          if (favs[id] === row.dataset.tariff) delete favs[id]; else favs[id] = row.dataset.tariff;
+          save();
+          render();
+        });
+      });
+    });
+
+    filterBtns.forEach(function (b) {
+      b.addEventListener('click', function () { filter = b.dataset.filter; render(); });
+    });
+
+    render();
+  })();
+</script>
+
+</body>
+</html>
